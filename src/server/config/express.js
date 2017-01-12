@@ -32,11 +32,7 @@ export default function(app) {
   app.set('appPath', config.root);
 
   // define the folder that will be used for static assets
-  if(env === 'development') {
-    app.use(express.static('public'));
-  } else {
-    app.use(express.static('build'));
-  }
+  app.use(express.static(path.join(config.root, config.publicFolder)));
 
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());
@@ -72,7 +68,7 @@ export default function(app) {
 
   if ('production' === env) {
     app.use(compression());
-    app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));
+    app.use(favicon(path.join(config.root, config.publicFolder, 'favicon.ico')));
     app.use(express.static(app.get('appPath')));
     app.use(morgan('dev'));
   }

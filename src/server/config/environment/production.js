@@ -23,5 +23,6 @@ module.exports = {
         timestamps: false
       }
     }
-  }
+  },
+  publicFolder: 'build'
 };

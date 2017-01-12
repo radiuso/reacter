@@ -72,7 +72,9 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "start-wserver": "set NODE_ENV=development&& nodemon src/server/index.js",
-    "start-server": "NODE_ENV=development nodemon src/server/index.js"
+    "start-server": "NODE_ENV=development nodemon src/server/index.js",
+    "start-wprod": "set NODE_ENV=production&& node src/server/index.js",
+    "start-prod": "NODE_ENV=production node src/server/index.js"
   },
   "jest": {
     "collectCoverageFrom": [

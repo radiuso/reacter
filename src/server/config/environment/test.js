@@ -10,5 +10,6 @@ module.exports = {
         timestamps: false
       }
     }
-  }
+  },
+  publicFolder: 'public'
 };

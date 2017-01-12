@@ -2,6 +2,7 @@
 
 import errors from './components/errors';
 import path from 'path';
+import config from './config/environment';
 
 export default function(app) {
   // Insert routes below
@@ -14,7 +15,8 @@ export default function(app) {
   // All other routes should redirect to the index.html
   app.route('/*')
     .get((req, res) => {
-      res.render('index.html');
+      res.sendFile(path.join(config.root, 'build/index.html'));
+      // res.render('index.html');
     });
 
   // app.get('*.js', function (req, res, next) {

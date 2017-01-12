@@ -18,6 +18,7 @@ if (config.seedDB) {
 const app = new Express();
 const server = new Server(app);
 
+// express must be initialized before init routes
 configExpress(app);
 routes(app);
 
