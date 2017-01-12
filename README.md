@@ -7,12 +7,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Run
 
-run :
+to start the client development server
 > npm start  
 
-to start the client development server
-
-run :
-> npm run start-server
-
 to run the node server
+> npm run start-server

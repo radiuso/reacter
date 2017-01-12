@@ -8,9 +8,8 @@
 
 'use strict';
 
-var sqldb = require('../../sqldb');
-
-var User = sqldb.User;
+import sqldb from '../../sqldb';
+const User = sqldb.User;
 
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;

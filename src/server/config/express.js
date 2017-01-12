@@ -28,11 +28,15 @@ export default function(app) {
 
   app.set('env', env);
   app.set('view engine', 'ejs');
-  app.set('views', 'public');
+  app.set('views', config.root);
   app.set('appPath', config.root);
 
   // define the folder that will be used for static assets
-  app.use(express.static('public'));
+  if(env === 'development') {
+    app.use(express.static('public'));
+  } else {
+    app.use(express.static('build'));
+  }
 
   app.use(bodyParser.urlencoded({ extended: false }));
   app.use(bodyParser.json());

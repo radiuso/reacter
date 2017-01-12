@@ -7,7 +7,7 @@ import Express from 'express';
 import sqldb from './sqldb';
 import config from './config/environment';
 import configExpress from './config/express';
-import useApi from './api';
+import routes from './routes';
 
 // DB
 if (config.seedDB) {
@@ -19,19 +19,7 @@ const app = new Express();
 const server = new Server(app);
 
 configExpress(app);
-useApi(app);
-
-// app.get('*.js', function (req, res, next) {
-//   req.url = req.url + '.gz';
-//   res.set('Content-Encoding', 'gzip');
-//   next();
-// });
-
-// universal routing and rendering
-app.get('/*', (req, res) => {
-  let markup;
-  return res.render('index', { markup });
-});
+routes(app);
 
 // start the server
 function startServer() {

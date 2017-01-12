@@ -7,7 +7,6 @@
 import sqldb from '../sqldb';
 var User = sqldb.User;
 
-
 User.sync()
   .then(() => User.destroy({ where: {} }))
   .then(() => {
