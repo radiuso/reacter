@@ -7,10 +7,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Use in development
 
-start the client side (react app)
+start the client side react app (port 3000)
 > npm start  
 
-run the node server (api)
+run the node server api (port 9000)
 > npm run start-server
 
 ## Use in production
@@ -18,4 +18,5 @@ run the node server (api)
 create the build static files
 > npm run build
 
-run the server
+run the server (port 8080)
+> npm run start-prod
