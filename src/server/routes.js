@@ -16,12 +16,13 @@ export default function(app) {
   app.route('/*')
     .get((req, res) => {
       res.sendFile(path.join(config.root, 'build/index.html'));
-      // res.render('index.html');
     });
 
-  // app.get('*.js', function (req, res, next) {
-  //   req.url = req.url + '.gz';
-  //   res.set('Content-Encoding', 'gzip');
-  //   next();
-  // });
+  if(config.env === 'production') {
+    app.get('*.js', function (req, res, next) {
+      req.url = req.url + '.gz';
+      res.set('Content-Encoding', 'gzip');
+      next();
+    });
+  }
 }

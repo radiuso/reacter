@@ -12,7 +12,6 @@ import bodyParser from 'body-parser';
 import methodOverride from 'method-override';
 import cookieParser from 'cookie-parser';
 import errorHandler from 'errorhandler';
-import lusca from 'lusca';
 import path from 'path';
 import passport from 'passport';
 import session from 'express-session';
@@ -42,7 +41,7 @@ export default function(app) {
 
   // Persist sessions with sequelize Store
   // We need to enable sessions for passport-twitter because it's an
-  // oauth 1.0 strategy, and Lusca depends on sessions
+  // oauth 1.0 strategy
   app.use(session({
     secret: config.secrets.session,
     saveUninitialized: true,
@@ -50,20 +49,6 @@ export default function(app) {
     store: new Store(sqldb.sequelize)
   }));
 
-  /**
-   * Lusca - express server security
-   * https://github.com/krakenjs/lusca
-   */
-  app.use(lusca({
-    csrf: true,
-    xframe: 'SAMEORIGIN',
-    hsts: {
-      maxAge: 31536000, //1 year, in seconds
-      includeSubDomains: true,
-      preload: true
-    },
-    xssProtection: true
-  }));
 
 
   if ('production' === env) {

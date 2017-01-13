@@ -5,10 +5,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 > npm install --global nodemon
 
-## Run
+## Use in development
 
-to start the client development server
+start the client side (react app)
 > npm start  
 
-to run the node server
+run the node server (api)
 > npm run start-server
+
+## Use in production
+
+create the build static files
+> npm run build
+
+run the server
