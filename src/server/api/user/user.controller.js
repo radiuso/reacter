@@ -61,14 +61,14 @@ function removeEntity(res) {
 
 // Gets a list of Users
 export function index(req, res) {
-  User.findAll()
+  return User.findAll()
   .then(responseWithResult(res))
   .catch(handleError(res));
 }
 
 // Gets a single User from the DB
 export function show(req, res) {
-  User.find({
+  return User.find({
     where: {
       _id: req.params.id
     }
@@ -80,7 +80,7 @@ export function show(req, res) {
 
 // Creates a new User in the DB
 export function create(req, res) {
-  User.create(req.body)
+  return User.create(req.body)
   .then(responseWithResult(res, 201))
   .catch(handleError(res));
 }
@@ -90,7 +90,7 @@ export function update(req, res) {
   if (req.body._id) {
     delete req.body._id;
   }
-  User.find({
+  return User.find({
     where: {
       _id: req.params.id
     }
@@ -103,7 +103,7 @@ export function update(req, res) {
 
 // Deletes a User from the DB
 export function destroy(req, res) {
-  User.find({
+  return User.find({
     where: {
       _id: req.params.id
     }
