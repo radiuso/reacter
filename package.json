@@ -13,6 +13,7 @@
     "chalk": "1.1.3",
     "connect-history-api-fallback": "1.3.0",
     "cors": "^2.8.1",
+    "cross-env": "^3.1.4",
     "cross-spawn": "4.0.2",
     "css-loader": "0.26.0",
     "detect-port": "1.0.1",
@@ -75,10 +76,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "start-wserver": "set NODE_ENV=development&& nodemon src/server/index.js",
-    "start-server": "NODE_ENV=development nodemon src/server/index.js",
-    "start-wprod": "set NODE_ENV=production&& node src/server/index.js",
-    "start-prod": "NODE_ENV=production node src/server/index.js"
+    "start-server": "cross-env NODE_ENV=development nodemon src/server/index.js",
+    "start-prod": "cross-env NODE_ENV=production node src/server/index.js"
   },
   "jest": {
     "collectCoverageFrom": [
