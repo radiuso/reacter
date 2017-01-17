@@ -1,7 +1,9 @@
 import 'whatwg-fetch';
 // import 'babel-polyfill';
 
-const API_URL = 'http://localhost:9000/api';
+import { API_URL } from '../../../constants';
+
+// const API_URL = 'http://localhost:9000/api';
 const API_HEADERS = {
   'Content-Type': 'application/json',
   'Authorization': 'reacter'

@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": false,
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom",
+    "start-devclient": "node scripts/start.js",
     "start-devapi": "cross-env NODE_ENV=development nodemon src/server/index.js",
-    "start-api": "cross-env NODE_ENV=production node src/server/index.js"
+    "start": "cross-env NODE_ENV=production node src/server/index.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js --env=jsdom"
   },
   "devDependencies": {
     "autoprefixer": "6.5.1",
