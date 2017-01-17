@@ -1,7 +1,14 @@
 {
   "name": "reacter",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "scripts": {
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js --env=jsdom",
+    "start-devapi": "cross-env NODE_ENV=development nodemon src/server/index.js",
+    "start-api": "cross-env NODE_ENV=production node src/server/index.js"
+  },
   "devDependencies": {
     "autoprefixer": "6.5.1",
     "babel-core": "6.17.0",
@@ -58,6 +65,7 @@
     "express": "^4.14.0",
     "express-sequelize-session": "^0.4.0",
     "express-session": "^1.14.2",
+    "helmet": "^3.4.0",
     "method-override": "^2.3.7",
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
@@ -71,13 +79,6 @@
     "serve-favicon": "^2.3.2",
     "sqlite3": "^3.1.8",
     "whatwg-fetch": "^1.0.0"
-  },
-  "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom",
-    "start-server": "cross-env NODE_ENV=development nodemon src/server/index.js",
-    "start-prod": "cross-env NODE_ENV=production node src/server/index.js"
   },
   "jest": {
     "collectCoverageFrom": [

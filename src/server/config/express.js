@@ -3,24 +3,16 @@
  */
 
 'use strict';
-
 import express from 'express';
 import favicon from 'serve-favicon';
 import morgan from 'morgan';
-import compression from 'compression';
 import bodyParser from 'body-parser';
 import methodOverride from 'method-override';
 import cookieParser from 'cookie-parser';
 import errorHandler from 'errorhandler';
 import path from 'path';
-import passport from 'passport';
-import session from 'express-session';
-import expressSequelizeSession from 'express-sequelize-session';
 
 import config from './environment';
-import sqldb from '../sqldb';
-
-var Store = expressSequelizeSession(session.Store);
 
 export default function(app) {
   const env = config.env;
@@ -37,27 +29,14 @@ export default function(app) {
   app.use(bodyParser.json());
   app.use(methodOverride());
   app.use(cookieParser());
-  app.use(passport.initialize());
-
-  // Persist sessions with sequelize Store
-  // We need to enable sessions for passport-twitter because it's an
-  // oauth 1.0 strategy
-  app.use(session({
-    secret: config.secrets.session,
-    saveUninitialized: true,
-    resave: false,
-    store: new Store(sqldb.sequelize)
-  }));
-
-
 
   if ('production' === env) {
-    app.use(compression());
     app.use(favicon(path.join(config.root, config.publicFolder, 'favicon.ico')));
     app.use(express.static(app.get('appPath')));
-    app.use(morgan('dev'));
+    app.use(morgan('tiny'));
+    app.use(errorHandler()); // Error handler - has to be last
   }
-  else if ('development' === env || 'test' === env) {
+  else {
     app.use(express.static(path.join(config.root, '.tmp')));
     app.use(express.static(app.get('appPath')));
     app.use(morgan('dev'));

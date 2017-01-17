@@ -5,27 +5,23 @@ import { Server } from 'http';
 import Express from 'express';
 
 import sqldb from './sqldb';
-import config from './config/environment';
-import configExpress from './config/express';
+import env from './config/environment';
+import configure from './config';
 import routes from './routes';
 
-// DB
-if (config.seedDB) {
-  require('./config/seed');
-}
 
 // initialize the server and configure
 const app = new Express();
 const server = new Server(app);
 
-// express must be initialized before init routes
-configExpress(app);
+// config all app
+configure(app);
 routes(app);
 
 // start the server
 function startServer() {
-  server.listen(config.port, config.ip, function() {
-    console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
+  server.listen(env.port, env.ip, function() {
+    console.log('Express server listening on %d, in %s mode', env.port, app.get('env'));
   });
 }
 
