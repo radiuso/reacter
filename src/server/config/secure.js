@@ -6,6 +6,7 @@
 
 import passport from 'passport';
 import session from 'express-session';
+import helmet from 'helmet';
 import expressSequelizeSession from 'express-sequelize-session';
 
 import config from './environment';
@@ -28,7 +29,8 @@ export default function(app) {
     store: new Store(sqldb.sequelize)
   }));
 
-  
+  app.use(helmet());
+
   if(config.env === 'development') {
     app.use(function(req, res, next) {
       res.setHeader('Access-Control-Allow-Origin', '*');
