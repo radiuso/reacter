@@ -1,10 +1,12 @@
 import { createStore, combineReducers } from 'redux';
 
 import UserReducers from './containers/User/redux/reducers';
+import AuthReducers from './containers/Auth/redux/reducers';
 
 // Combine Reducers
 const reducers = {
-  ...UserReducers
+  ...UserReducers,
+  ...AuthReducers
 };
 
 const store = createStore(combineReducers(reducers));

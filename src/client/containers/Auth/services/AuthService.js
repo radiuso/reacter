@@ -5,7 +5,6 @@ import { API_URL } from '../../../constants';
 
 let AuthService = {
     login(username, password) {
-      console.log(username, password);
       return fetch(`${API_URL}/users/login`, {
         method: 'POST',
         headers: {

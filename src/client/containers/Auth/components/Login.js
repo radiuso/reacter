@@ -11,9 +11,16 @@ class Login extends Component {
     AuthActionCreator.login(username, password);
   }
 
+  componentWillReceiveProps(newProps) {
+    if(newProps.auth !== undefined) {
+      this.props.router.transitionTo('home');
+    }
+  }
+
   render() {
     return (
       <div className="login">
+        <h3>{this.props.auth.username}</h3>
         <form id="login" onSubmit={ this.login.bind(this) }>
           <input type="text" ref="username" name="username" placeholder="Name" />
           <br />
