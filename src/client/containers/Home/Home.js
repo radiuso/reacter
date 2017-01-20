@@ -7,8 +7,10 @@ class Home extends Component {
       <div className="home">
         <h2>Home sweet home</h2>
         <br />
-        
+
         <Link to='/users'>Users</Link>
+        <br />
+        <Link to='/login'>Login</Link>
       </div>
     );
   }

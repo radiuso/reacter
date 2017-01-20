@@ -22,12 +22,12 @@ export default function(app) {
   // Persist sessions with sequelize Store
   // We need to enable sessions for passport-twitter because it's an
   // oauth 1.0 strategy
-  app.use(session({
-    secret: config.secrets.session,
-    saveUninitialized: true,
-    resave: false,
-    store: new Store(sqldb.sequelize)
-  }));
+  // app.use(session({
+  //   secret: config.secrets.session,
+  //   saveUninitialized: true,
+  //   resave: false,
+  //   store: new Store(sqldb.sequelize)
+  // }));
 
   // passport
   app.use(passport.initialize());

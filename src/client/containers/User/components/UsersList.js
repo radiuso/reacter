@@ -5,8 +5,8 @@ class UsersList extends Component {
 
   render() {
     let users = this.props.users.map((user, index) => (
-      <div key={user._id}>
-        {user._id} - {user.name}
+      <div key={user.id}>
+        {user.id} - {user.username}
       </div>
     ));
 
