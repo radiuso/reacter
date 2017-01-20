@@ -12,12 +12,12 @@ import expressSequelizeSession from 'express-sequelize-session';
 import config from './environment';
 import sqldb from '../sqldb';
 
+const User = sqldb.User;
+
 var Store = expressSequelizeSession(session.Store);
 
 export default function(app) {
   const env = config.env;
-
-  app.use(passport.initialize());
 
   // Persist sessions with sequelize Store
   // We need to enable sessions for passport-twitter because it's an
@@ -28,6 +28,14 @@ export default function(app) {
     resave: false,
     store: new Store(sqldb.sequelize)
   }));
+
+  // passport
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  passport.use(User.createStrategy());
+  passport.serializeUser(User.serializeUser());
+  passport.deserializeUser(User.deserializeUser());
 
   app.use(helmet());
 

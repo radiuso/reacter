@@ -10,14 +10,11 @@ var User = sqldb.User;
 User.sync()
   .then(() => User.destroy({ where: {} }))
   .then(() => {
-    User.bulkCreate([{
-      name: 'Test User',
+    User.register({
+      id: 1,
+      username: 'admin',
       active: true
-    }, {
-      name: 'Admin',
-      active: true
-    }])
-    .then(() => {
+    }, 'admin', (() => {
       console.log('finished populating users');
-    });
+    }));
   });

@@ -1,14 +1,7 @@
-'use strict';
+import passportLocalSequelize from 'passport-local-sequelize';
 
 export default function(sequelize, DataTypes) {
-  return sequelize.define('User', {
-    _id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true
-    },
-    name: DataTypes.STRING,
+  return passportLocalSequelize.defineUser(sequelize, {
     active: DataTypes.BOOLEAN
   });
 }

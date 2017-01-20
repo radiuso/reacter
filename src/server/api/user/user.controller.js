@@ -59,6 +59,11 @@ function removeEntity(res) {
   };
 }
 
+export function login(req, res) {
+  return res.json(req.user);
+}
+
+
 // Gets a list of Users
 export function index(req, res) {
   return User.findAll()
@@ -70,7 +75,7 @@ export function index(req, res) {
 export function show(req, res) {
   return User.find({
     where: {
-      _id: req.params.id
+      id: req.params.id
     }
   })
   .then(handleEntityNotFound(res))
@@ -92,7 +97,7 @@ export function update(req, res) {
   }
   return User.find({
     where: {
-      _id: req.params.id
+      id: req.params.id
     }
   })
   .then(handleEntityNotFound(res))
@@ -105,7 +110,7 @@ export function update(req, res) {
 export function destroy(req, res) {
   return User.find({
     where: {
-      _id: req.params.id
+      id: req.params.id
     }
   })
   .then(handleEntityNotFound(res))
