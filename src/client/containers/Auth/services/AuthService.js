@@ -1,11 +1,10 @@
 import 'whatwg-fetch';
-// import 'babel-polyfill';
 
 import { API_URL } from '../../../constants';
 
 let AuthService = {
     login(username, password) {
-      return fetch(`${API_URL}/users/login`, {
+      return fetch(`${API_URL}/auth`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -15,7 +14,7 @@ let AuthService = {
           'password': password
         })
       })
-      .then((response) => response.json());
+      .then((response) => response.json())
     },
 
     logout() {

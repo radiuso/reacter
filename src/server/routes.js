@@ -3,10 +3,13 @@
 import path from 'path';
 import errors from './components/errors';
 import environment from './config/environment';
+const rights = require('./middleware/rights');
+
 
 export default function(app) {
   // Insert routes below
-  app.use('/api/users', require('./api/user'));
+  app.use('/api/auth', require('./api/auth'));
+  app.use('/api/users', rights.isAllowed(), require('./api/user'));
 
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')

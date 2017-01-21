@@ -59,11 +59,6 @@ function removeEntity(res) {
   };
 }
 
-export function login(req, res) {
-  return res.json(req.user);
-}
-
-
 // Gets a list of Users
 export function index(req, res) {
   return User.findAll()

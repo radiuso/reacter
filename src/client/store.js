@@ -1,4 +1,5 @@
 import { createStore, combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux'
 
 import UserReducers from './containers/User/redux/reducers';
 import AuthReducers from './containers/Auth/redux/reducers';
@@ -6,7 +7,8 @@ import AuthReducers from './containers/Auth/redux/reducers';
 // Combine Reducers
 const reducers = {
   ...UserReducers,
-  ...AuthReducers
+  ...AuthReducers,
+  routing: routerReducer
 };
 
 const store = createStore(combineReducers(reducers));

@@ -5,7 +5,6 @@
 'use strict';
 
 import passport from 'passport';
-import session from 'express-session';
 import helmet from 'helmet';
 import expressSequelizeSession from 'express-sequelize-session';
 
@@ -14,24 +13,12 @@ import sqldb from '../sqldb';
 
 const User = sqldb.User;
 
-var Store = expressSequelizeSession(session.Store);
 
 export default function(app) {
   const env = config.env;
 
-  // Persist sessions with sequelize Store
-  // We need to enable sessions for passport-twitter because it's an
-  // oauth 1.0 strategy
-  // app.use(session({
-  //   secret: config.secrets.session,
-  //   saveUninitialized: true,
-  //   resave: false,
-  //   store: new Store(sqldb.sequelize)
-  // }));
-
   // passport
   app.use(passport.initialize());
-  app.use(passport.session());
 
   passport.use(User.createStrategy());
   passport.serializeUser(User.serializeUser());

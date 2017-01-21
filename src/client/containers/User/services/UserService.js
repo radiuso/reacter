@@ -1,17 +1,17 @@
 import 'whatwg-fetch';
-// import 'babel-polyfill';
 
 import { API_URL } from '../../../constants';
+import store from '../../../store';
+const auth = store.getState().authState;
 
-// const API_URL = 'http://localhost:9000/api';
 const API_HEADERS = {
   'Content-Type': 'application/json',
-  'Authorization': 'reacter'
+  'Authorization': 'Bearer '+auth.token
 };
 
 let UsersService = {
     fetchUsers() {
-        return fetch(`${API_URL}/users`, {headers:API_HEADERS})
+        return fetch(`${API_URL}/users`, { headers: API_HEADERS })
         .then((response) => response.json());
     }
 };
