@@ -21,7 +21,7 @@ var shouldUseRelativeAssetPaths = publicPath === './';
 // Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
 var publicUrl = publicPath.slice(0, -1);
 // Get environment variables to inject into our app.
-var env = getClientEnvironment(publicUrl);
+var env = getClientEnvironment(publicPath, publicUrl);
 
 // Assert this just to be safe.
 // Development builds of React are slow and not intended for production.

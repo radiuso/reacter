@@ -122,9 +122,9 @@
     "start": "cross-env NODE_ENV=production node server",
     "start:dev": "cross-env NODE_ENV=development nodemon server --config nodemon.json",
     "test:server": "gulp test",
-    "start:app": "node scripts/start.js",
-    "build:app": "node scripts/build.js",
-    "test:app": "node scripts/test.js --env=jsdom"
+    "start:app": "node client/scripts/start.js",
+    "build:app": "node client/scripts/build.js",
+    "test:app": "node client/scripts/test.js --env=jsdom"
   },
   "jest": {
     "collectCoverageFrom": [

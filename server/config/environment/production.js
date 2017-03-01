@@ -1,4 +1,6 @@
 'use strict';
+import path from 'path';
+
 /*eslint no-process-env:0*/
 
 // Production specific configuration
@@ -20,5 +22,8 @@ module.exports = {
       || process.env.MONGOHQ_URL
       || process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME
       || 'mongodb://localhost/nodeauth'
-  }
+  },
+
+  clientRoot: path.join(path.normalize(`${__dirname}/../../..`), 'build')
+
 };

@@ -9,7 +9,7 @@ let initialState = {
 };
 
 if(savedState !== undefined) {
-  initialState = savedState;
+  // initialState = savedState;
 }
 
 
