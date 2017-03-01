@@ -15,7 +15,7 @@ var publicPath = '/';
 // `publicUrl` is just like `publicPath`, but we will provide it to our app
 // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
 // Omit trailing slash as %PUBLIC_PATH%/xyz looks better than %PUBLIC_PATH%xyz.
-var publicUrl = '';
+var publicUrl = 'http://localhost:9000';
 // Get environment variables to inject into our app.
 var env = getClientEnvironment(publicUrl);
 
@@ -153,11 +153,7 @@ module.exports = {
       // Remember to add the new extension(s) to the "url" loader exclusion list.
     ]
   },
-  // Point ESLint to our predefined config.
-  eslint: {
-    
-    cache: true
-  },
+  
   // We use PostCSS for autoprefixing only.
   postcss: function() {
     return [

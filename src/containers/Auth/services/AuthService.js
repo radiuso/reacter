@@ -1,16 +1,16 @@
 import 'whatwg-fetch';
 
-import { API_URL } from '../../../constants';
+import { PUBLIC_URL } from '../../../constants';
 
 let AuthService = {
     login(username, password) {
-      return fetch(`${API_URL}/auth`, {
+      return fetch(`${PUBLIC_URL}/auth/local`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          'username': username,
+          'email': username,
           'password': password
         })
       })

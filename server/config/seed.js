@@ -10,7 +10,7 @@ import config from './environment/';
 
 export default function seedDatabaseIfNeeded() {
   if(config.seedDB) {
-    console.log("Seeding...")
+    console.log('Seeding...');
     Thing.find({}).remove()
       .then(() => {
         return Thing.create({
@@ -21,7 +21,7 @@ export default function seedDatabaseIfNeeded() {
         }, {
           name: 'Server and Client integration',
           info: 'Built with a powerful and fun stack: MongoDB, Express, '
-                + 'AngularJS, and Node.'
+                + ' and Node.'
         }, {
           name: 'Smart Build System',
           info: 'Build system ignores `spec` files, allowing you to keep '

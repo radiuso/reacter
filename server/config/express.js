@@ -19,6 +19,7 @@ import passport from 'passport';
 import session from 'express-session';
 import connectMongo from 'connect-mongo';
 import mongoose from 'mongoose';
+import helmet from 'helmet';
 var MongoStore = connectMongo(session);
 
 export default function(app) {
@@ -26,13 +27,22 @@ export default function(app) {
 
   if(env === 'development' || env === 'test') {
     app.use(express.static(path.join(config.root, '.tmp')));
+    app.use(function(req, res, next) {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Headers', 'Origin, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, X-Response-Time, X-PINGOTHER, X-CSRF-Token,Authorization');
+      res.setHeader('Access-Control-Allow-Methods', '*');
+      res.setHeader('Access-Control-Expose-Headers', 'X-Api-Version, X-Request-Id, X-Response-Time');
+      res.setHeader('Access-Control-Max-Age', '1000');
+      return next();
+    });
+    app.use(errorHandler()); // Error handler - has to be last
   }
 
   if(env === 'production') {
-    app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));
+    app.use(favicon(path.join(config.clientRoot, 'favicon.ico')));
   }
 
-  app.set('appPath', path.join(config.root, 'client'));
+  app.set('appPath', config.clientRoot);
   app.use(express.static(app.get('appPath')));
   app.use(morgan('dev'));
 
@@ -45,6 +55,7 @@ export default function(app) {
   app.use(methodOverride());
   app.use(cookieParser());
   app.use(passport.initialize());
+  app.use(helmet());
 
 
   // Persist sessions with MongoStore / sequelizeStore
@@ -64,10 +75,10 @@ export default function(app) {
    * Lusca - express server security
    * https://github.com/krakenjs/lusca
    */
-  if(env !== 'test' && !process.env.SAUCE_USERNAME) {
+  if(env !== 'test' && env !== 'development' && !process.env.SAUCE_USERNAME) {
     app.use(lusca({
       csrf: {
-        angular: false
+        angular:false
       },
       xframe: 'SAMEORIGIN',
       hsts: {
