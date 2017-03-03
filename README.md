@@ -1,8 +1,5 @@
-# node-auth
-This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 4.1.3.
-Split and keep server side node architecture style.
+# Reacter
 
-It used nodemon to livereload dev server.
 
 ## Testing 
 
