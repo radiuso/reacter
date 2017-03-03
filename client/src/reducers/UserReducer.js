@@ -6,7 +6,7 @@ const initialState = [];
 export default (state = initialState, action) => {
     switch (action.type) {
       case FETCH_USERS_SUCCESS:
-        return action.payload.response;
+        return action.payload.response.data;
 
       default:
         return state;
