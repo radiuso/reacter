@@ -19,7 +19,7 @@ var all = {
   // Root path of server
   root: path.normalize(`${__dirname}/../../..`),
 
-  clientRoot: path.join(path.normalize(`${__dirname}/../../..`), 'public'),
+  clientRoot: path.join(path.normalize(`${__dirname}/../../..`), 'client'),
 
   // Browser-sync port
   browserSyncPort: process.env.BROWSER_SYNC_PORT || 3000,

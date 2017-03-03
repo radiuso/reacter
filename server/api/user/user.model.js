@@ -52,7 +52,9 @@ UserSchema
   .get(function() {
     return {
       name: this.name,
-      role: this.role
+      email: this.email,
+      role: this.role,
+      provider: this.provider
     };
   });
 
@@ -62,7 +64,10 @@ UserSchema
   .get(function() {
     return {
       _id: this._id,
-      role: this.role
+      role: this.role,
+      name: this.name,
+      email: this.email,
+      provider: this.provider
     };
   });
 

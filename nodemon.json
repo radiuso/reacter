@@ -1,10 +1,6 @@
 {   
     "ignore": [
-        "client/*", 
-        "README.md", 
-        "*.json", 
-        "gulpfile.babel.js",
-        "macha.*",
-        "src/*"
+        "*.integration.js",
+        "*.spec.js"
     ] 
 }

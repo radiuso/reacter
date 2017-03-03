@@ -5,7 +5,7 @@ import Login from './components/Login';
 const routes = (
 	<Route path="/">
 		<Route path="login" component={Login} />
-  </Route>
+	</Route>
 );
 
 export default routes;

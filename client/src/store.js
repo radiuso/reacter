@@ -1,8 +1,11 @@
 import { createStore, combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux'
+import { routerReducer } from 'react-router-redux';
+import jwtDecode from 'jwt-decode';
 
 import UserReducers from './containers/User/redux/reducers';
 import AuthReducers from './containers/Auth/redux/reducers';
+import setAuthorizationToken from './utils/setAuthorizationToken';
+import { setCurrentUser } from './containers/Auth/actions/AuthActionCreator';
 
 // Combine Reducers
 const reducers = {
@@ -12,6 +15,13 @@ const reducers = {
 };
 
 const store = createStore(combineReducers(reducers));
+
+// set auth
+if(localStorage.jwtToken) {
+  setAuthorizationToken(localStorage.jwtToken);
+  store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken)));
+}
+
 
 store.dispatchAsync = (promise, types, payload) => {
   const { request, success, failure } = types;

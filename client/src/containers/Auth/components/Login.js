@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import AuthActionCreator from '../actions/AuthActionCreator';
+import { login } from '../actions/AuthActionCreator';
 
-class Login extends Component {
-  login(e) {
+class LoginComponent extends Component {
+  handleLogin(e) {
     e.preventDefault();
-    let username = this.refs.username.value;
+    let email = this.refs.login.value;
     let password = this.refs.password.value;
 
-    AuthActionCreator.login(username, password);
+    login(email, password);
   }
 
   componentWillUpdate() {
@@ -20,9 +20,9 @@ class Login extends Component {
   render() {
     return (
       <div className="login">
-        <h3>{this.props.auth.user.username}</h3>
-        <form id="login" onSubmit={ this.login.bind(this) }>
-          <input type="text" ref="username" name="username" placeholder="Name" />
+        <h3>{this.props.auth.user.name}</h3>
+        <form id="login" onSubmit={ this.handleLogin.bind(this) }>
+          <input type="email" ref="login" name="login" placeholder="Email" />
           <br />
           <input type="text" ref="password" name="password" placeholder="Password" />
           <br />
@@ -39,4 +39,4 @@ const mapStateToProps = function(store) {
   };
 };
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(LoginComponent);
