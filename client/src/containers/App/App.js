@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import AppSearchBar from '../../components/AppSearchBar';
+
+
 import './App.css';
 
 class App extends Component {
@@ -18,9 +21,12 @@ class App extends Component {
     const userSection = this.getUsername();
 
     return (
-      <div className="App">
-        {userSection}
-        {this.props.children}
+      <div>
+        <AppSearchBar isLogged={ this.props.auth.isAuthenticated } />
+        <div className="App">
+          {userSection}
+          {this.props.children}
+        </div>
       </div>
     );
   }
