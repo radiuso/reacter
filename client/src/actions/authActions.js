@@ -33,3 +33,8 @@ export function login(login, password) {
     failure: LOGIN_ERROR
   });
 };
+
+export function logout() {
+  setAuthorizationToken();
+  localStorage.removeItem('jwtToken');
+}

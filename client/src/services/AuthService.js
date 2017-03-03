@@ -1,18 +1,12 @@
-import 'whatwg-fetch';
+import axios from 'axios';
 
 import { PUBLIC_URL } from '../constants';
 
 let AuthService = {
     login(login, password) {
-      return fetch(`${PUBLIC_URL}/auth/local`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
+      return axios.post(`${PUBLIC_URL}/auth/local`, {
           'email': login,
           'password': password
-        })
       })
       .then((response) => response.json())
     },

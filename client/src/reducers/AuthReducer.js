@@ -6,11 +6,10 @@ let initialState = {
   user: {}
 };
 
-const authReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
     switch (action.type) {
       case SET_CURRENT_USER:
         const user = action.user;
-        console.log(action);
         return {
           isAuthenticated: !isEmpty(user),
           user
@@ -20,5 +19,3 @@ const authReducer = (state = initialState, action) => {
         return state;
     }
 };
-
-export default authReducer;

@@ -1,7 +1,7 @@
-import AuthReducer from './AuthReducer';
-import UserReducer from './UserReducer';
+import authReducer from './authReducer';
+import userReducer from './userReducer';
 
 export default {
-  authState: AuthReducer,
-  userState: UserReducer
+  authState: authReducer,
+  userState: userReducer
 };

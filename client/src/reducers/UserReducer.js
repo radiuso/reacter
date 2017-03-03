@@ -3,7 +3,7 @@ import { FETCH_USERS_SUCCESS } from '../actions/types/userTypes';
 
 const initialState = [];
 
-const userReducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
     switch (action.type) {
       case FETCH_USERS_SUCCESS:
         return action.payload.response;
@@ -12,5 +12,3 @@ const userReducer = (state = initialState, action) => {
         return state;
     }
 };
-
-export default userReducer;

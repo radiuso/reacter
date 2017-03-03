@@ -9,3 +9,15 @@ export const redirectNonUser = (nextState, replace) => {
     });
   }
 };
+
+export function hasRole(roleRequired) {
+  return (nextState, replace) => {
+    const auth = store.getState().authState;
+
+    if (!auth.isAuthenticated || auth.user.role !== roleRequired) {
+      replace({
+        pathname: "/",
+      });
+    }
+  }
+}
