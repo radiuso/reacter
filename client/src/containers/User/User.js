@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import UserActionCreator from './actions/UserActionCreator';
+import { fetchUsers } from '../../actions/userActions';
 
 class User extends Component {
   componentDidMount() {
     // fetch users
-    UserActionCreator.fetchUsers();
+    fetchUsers();
   }
 
   render() {

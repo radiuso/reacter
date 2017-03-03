@@ -2,19 +2,18 @@ import { createStore, combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import jwtDecode from 'jwt-decode';
 
-import UserReducers from './containers/User/redux/reducers';
-import AuthReducers from './containers/Auth/redux/reducers';
+import reducers from './reducers';
+
 import setAuthorizationToken from './utils/setAuthorizationToken';
-import { setCurrentUser } from './containers/Auth/actions/AuthActionCreator';
+import { setCurrentUser } from './actions/authActions';
 
 // Combine Reducers
-const reducers = {
-  ...UserReducers,
-  ...AuthReducers,
+const mergedReducers = {
+  ...reducers,
   routing: routerReducer
 };
 
-const store = createStore(combineReducers(reducers));
+const store = createStore(combineReducers(mergedReducers));
 
 // set auth
 if(localStorage.jwtToken) {

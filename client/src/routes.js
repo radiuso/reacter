@@ -7,7 +7,6 @@ import NotFoundPage from './containers/NotFoundPage';
 import UserRoutes from './containers/User/routes';
 import AuthRoutes from './containers/Auth/routes';
 
-
 const routes = (
 	<Route component={App}>
 		<IndexRoute component={Home} />

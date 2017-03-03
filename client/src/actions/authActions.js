@@ -1,8 +1,10 @@
-import store from '../../../store';
-import { LOGIN, LOGIN_SUCCESS, LOGIN_ERROR, SET_CURRENT_USER } from '../constants';
-import AuthService from '../services/AuthService';
-import setAuthorizationToken from '../../../utils/setAuthorizationToken';
 import jwtDecode from 'jwt-decode';
+
+import store from '../store';
+import AuthService from '../services/AuthService';
+import setAuthorizationToken from '../utils/setAuthorizationToken';
+
+import { LOGIN, LOGIN_SUCCESS, LOGIN_ERROR, SET_CURRENT_USER } from './types/authTypes';
 
 export function setCurrentUser(user) {
   return {

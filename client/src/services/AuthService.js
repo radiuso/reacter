@@ -1,6 +1,6 @@
 import 'whatwg-fetch';
 
-import { PUBLIC_URL } from '../../../constants';
+import { PUBLIC_URL } from '../constants';
 
 let AuthService = {
     login(login, password) {

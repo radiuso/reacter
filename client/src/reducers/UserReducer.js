@@ -1,4 +1,4 @@
-import { FETCH_USERS_SUCCESS } from '../constants';
+import { FETCH_USERS_SUCCESS } from '../actions/types/userTypes';
 // import update from 'react-addons-update';
 
 const initialState = [];

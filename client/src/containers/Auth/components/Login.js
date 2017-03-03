@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../actions/AuthActionCreator';
+import { login } from '../../../actions/authActions';
 
 class LoginComponent extends Component {
   handleLogin(e) {
@@ -12,7 +12,7 @@ class LoginComponent extends Component {
   }
 
   componentWillUpdate() {
-    if(this.props.auth.token !== undefined) {
+    if(this.props.auth.isAuthenticated) {
       this.props.router.push('/users');
     }
   }

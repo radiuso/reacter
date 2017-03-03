@@ -1,7 +1,7 @@
 import 'whatwg-fetch';
 
-import { API_URL } from '../../../constants';
-import store from '../../../store';
+import { API_URL } from '../constants';
+import store from '../store';
 const auth = store.getState().authState;
 
 const API_HEADERS = {
