@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { login } from '../../../actions/authActions';
+import { login, logout } from '../../../actions/authActions';
 
 class LoginComponent extends Component {
   handleLogin(e) {
@@ -11,9 +11,13 @@ class LoginComponent extends Component {
     login(email, password);
   }
 
-  componentWillUpdate() {
-    if(this.props.auth.isAuthenticated) {
-      this.props.router.push('/users');
+  componentWillMount() {
+    logout();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.auth.isAuthenticated) {
+      nextProps.router.push('/');
     }
   }
 

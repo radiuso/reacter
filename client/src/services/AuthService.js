@@ -8,7 +8,7 @@ let AuthService = {
           'email': login,
           'password': password
       })
-      .then((response) => response.json())
+      .catch((error) => console.log(error));
     },
 
     logout() {

@@ -4,7 +4,7 @@ import store from '../store';
 import AuthService from '../services/AuthService';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 
-import { LOGIN, LOGIN_SUCCESS, LOGIN_ERROR, SET_CURRENT_USER } from './types/authTypes';
+import { LOGIN, LOGIN_SUCCESS, LOGIN_ERROR, SET_CURRENT_USER, LOGOUT } from './types/authTypes';
 
 export function setCurrentUser(user) {
   return {
@@ -17,7 +17,7 @@ export function login(login, password) {
   store.dispatchAsync(
     AuthService.login(login, password)
     .then((res) => {
-      const token = res.token;
+      const token = res.data.token;
 
       localStorage.setItem('jwtToken', token);
       setAuthorizationToken(token);
@@ -37,4 +37,6 @@ export function login(login, password) {
 export function logout() {
   setAuthorizationToken();
   localStorage.removeItem('jwtToken');
+
+  store.dispatch({ type: LOGOUT });
 }

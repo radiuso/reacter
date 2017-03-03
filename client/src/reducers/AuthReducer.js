@@ -1,5 +1,5 @@
 import isEmpty from 'lodash/isEmpty';
-import { SET_CURRENT_USER } from '../actions/types/authTypes';
+import { SET_CURRENT_USER, LOGIN_ERROR, LOGOUT } from '../actions/types/authTypes';
 
 let initialState = {
   isAuthenticated: false,
@@ -14,7 +14,17 @@ export default (state = initialState, action) => {
           isAuthenticated: !isEmpty(user),
           user
         };
+      case LOGIN_ERROR: 
+        return {
+          isAuthenticated: false,
+          user: {},
+          error: {
+            ...action
+          }
+        };
 
+      case LOGOUT:
+        return initialState;
       default:
         return state;
     }

@@ -13,7 +13,10 @@ const mergedReducers = {
   routing: routerReducer
 };
 
-const store = createStore(combineReducers(mergedReducers));
+const store = createStore(
+  combineReducers(mergedReducers),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 // set auth
 if(localStorage.jwtToken) {
